@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="#FFB800">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:cardBackgroundColor="@color/black" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:text="@string/create_new_account"
+            android:textColor="@color/white"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="85dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="USERNAME"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EMAIL"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PASSWORD"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CONFIRM PASSWORD"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"/>
+
+    <Button
+        android:id="@+id/sgnbtn"
+        android:layout_marginTop="30dp"
+        android:layout_width="300dp"
+        android:text="Sign up"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp" />
+
+</LinearLayout>
