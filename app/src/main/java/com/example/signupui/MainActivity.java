@@ -19,15 +19,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     TextView loginTv;
     EditText usernameEt, emailEt, passwordEt, cPasswordEt;
     Button signUpBtn;
-    String userNameInput, emailInput, passwordInput, cPasswordInput, userId;
+    String userNameInput, emailInput, passwordInput, cPasswordInput, userId, username, email;
     //Firebase initialization
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
+    private DatabaseReference rootDtb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-    }
-    @Override
-    public void onStart() {
-        super.onStart();
-        currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            gotoHome();
-        }
 
         signUpBtn.setOnClickListener(view -> {
             //progressBar.setVisibility(View.VISIBLE);
@@ -66,10 +61,22 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Password does not match.", Toast.LENGTH_SHORT).show();
                 return;
             }else{
+
                 SignUp(userNameInput, emailInput, passwordInput);
             }
 
         });
+
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            gotoHome();
+        }
+
+
     }
     //Create user with username, email, and password
     public void SignUp (String username, String email, String password) {
@@ -84,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
                                 userId = user.getUid();
+                                rootDtb = FirebaseDatabase.getInstance().getReference();
+                                writeNewUser(userId, userNameInput, emailInput);
                                 // Now 'userId' contains the unique identifier for the newly created user
                                 Toast.makeText(MainActivity.this, "User ID:"+userId, Toast.LENGTH_SHORT).show();
                             }
@@ -95,12 +104,16 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-        UserDataClass userData = new UserDataClass(userId, username, email);
     }
      void gotoHome(){
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
         finish();
+    }
+    public void writeNewUser(String userId, String username, String email) {
+        UserDataClass user = new UserDataClass(username, email);
+
+        rootDtb.child("users").child(userId).setValue(user);
     }
 
 

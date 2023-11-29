@@ -40,8 +40,7 @@ public class HomeActivity extends AppCompatActivity {
         if(currentUser == null){
             gotoLogin();
         }else{
-            username = new UserDataClass().getUsername();
-            email = new UserDataClass().getEmail();
+            //display
         }
 
         logoutBtn.setOnClickListener(view -> {

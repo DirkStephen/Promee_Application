@@ -1,18 +1,13 @@
 package com.example.signupui;
 
 public class UserDataClass {
-    String userId, username, email;
+    String username, email;
 
     public UserDataClass(){}
 
-    public UserDataClass(String userId, String username, String email) {
-        this.userId = userId;
+    public UserDataClass(String username, String email) {
         this.username = username;
         this.email = email;
-    }
-
-    public String getUserId() {
-        return userId;
     }
 
     public String getUsername() {
