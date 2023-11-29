@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign-in to continue"
+            android:text="Log-in to continue"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="5dp"
             android:textSize="15sp"/>
@@ -42,7 +42,7 @@
             android:layout_marginBottom="5dp"/>
 
         <EditText
-            android:id="@+id/usernameET"
+            android:id="@+id/usernameEt"
             android:hint="Enter username"
             android:layout_width="match_parent"
             android:layout_height="50dp"
