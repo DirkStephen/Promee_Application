@@ -1,16 +1,33 @@
 package com.example.signupui;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     TextView loginTv;
-    EditText usernameInput, emailInput, passwordInput, cPasswordInput;
+    EditText usernameEt, emailEt, passwordEt, cPasswordEt;
     Button signUpBtn;
+    String userNameInput, emailInput, passwordInput, cPasswordInput, userId;
+    //Firebase initialization
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,16 +35,73 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //initialize components
-        usernameInput = findViewById(R.id.usernameEt);
-        emailInput = findViewById(R.id.emailEt);
-        passwordInput = findViewById(R.id.passwordEt);
-        cPasswordInput = findViewById(R.id.cPasswordEt);
+        usernameEt = findViewById(R.id.usernameEt);
+        emailEt = findViewById(R.id.emailEt);
+        passwordEt = findViewById(R.id.passwordEt);
+        cPasswordEt = findViewById(R.id.cPasswordEt);
         signUpBtn = findViewById(R.id.signUpBtn);
 
-    }
-
-    public void SignUp () {
+        mAuth = FirebaseAuth.getInstance();
 
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            gotoHome();
+        }
+
+        signUpBtn.setOnClickListener(view -> {
+            //progressBar.setVisibility(View.VISIBLE);
+            userNameInput = usernameEt.getText().toString();
+            emailInput = emailEt.getText().toString();
+            passwordInput = passwordEt.getText().toString();
+            cPasswordInput = cPasswordEt.getText().toString();
+
+            if(userNameInput.isEmpty() || emailInput.isEmpty() || passwordInput.isEmpty() || cPasswordInput.isEmpty()){
+                Toast.makeText(MainActivity.this, "Some fields are empty.", Toast.LENGTH_SHORT).show();
+                return;
+            }else if(!passwordInput.equals(cPasswordInput)){
+                Toast.makeText(MainActivity.this, "Password does not match.", Toast.LENGTH_SHORT).show();
+                return;
+            }else{
+                SignUp(userNameInput, emailInput, passwordInput);
+            }
+
+        });
+    }
+    //Create user with username, email, and password
+    public void SignUp (String username, String email, String password) {
+        //UserDataClass userData = new UserDataClass(username,email,password);
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        //progressBar.setVisibility(View.GONE);
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            if (user != null) {
+                                userId = user.getUid();
+                                // Now 'userId' contains the unique identifier for the newly created user
+                                Toast.makeText(MainActivity.this, "User ID:"+userId, Toast.LENGTH_SHORT).show();
+                            }
+                            gotoHome();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+        UserDataClass userData = new UserDataClass(userId, username, email);
+    }
+     void gotoHome(){
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 
 }
