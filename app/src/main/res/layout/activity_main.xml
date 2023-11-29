@@ -25,7 +25,7 @@
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
-        android:layout_width="300dp"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center">
@@ -40,29 +40,26 @@
         <EditText
             android:id="@+id/usernameEt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@color/white"
             android:padding="15dp"
-            android:hint="Enter username"
-            android:layout_gravity="center"/>
+            android:hint="Enter username" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="EMAIL"
             android:textStyle="bold"
-            android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"/>
 
         <EditText
             android:id="@+id/emailEt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@color/white"
             android:padding="15dp"
-            android:hint="Enter email"
-            android:layout_gravity="center"/>
+            android:hint="Enter email" />
 
         <TextView
             android:layout_width="match_parent"
@@ -75,11 +72,10 @@
         <EditText
             android:id="@+id/passwordEt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@color/white"
             android:padding="15dp"
-            android:hint="Enter password"
-            android:layout_gravity="center"/>
+            android:hint="Enter password" />
 
         <TextView
             android:layout_width="match_parent"
@@ -92,15 +88,14 @@
         <EditText
             android:id="@+id/cPasswordEt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@color/white"
             android:padding="15dp"
-            android:layout_gravity="center"
             android:hint="Confirm password"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/signUpBtn"
-            android:layout_width="300dp"
+            android:layout_width="350dp"
             android:layout_height="60dp"
             android:text="SIGN UP"
             android:textStyle="bold"
