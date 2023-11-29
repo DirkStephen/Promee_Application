@@ -13,7 +13,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        app:cardBackgroundColor="@color/black" >
+        app:cardBackgroundColor="@color/black">
 
         <TextView
             android:layout_width="wrap_content"
@@ -21,81 +21,93 @@
             android:textSize="35sp"
             android:text="@string/create_new_account"
             android:textColor="@color/white"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="85dp"/>
+            android:layout_gravity="center"/>
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="USERNAME"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="30dp" />
-
-    <EditText
+    <LinearLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="15dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="5dp"/>
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="USERNAME"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="5dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="EMAIL"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="30dp" />
+        <EditText
+            android:id="@+id/usernameEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="15dp"
+            android:hint="Enter username"
+            android:layout_gravity="center"/>
 
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="15dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EMAIL"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="PASSWORD"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="30dp" />
+        <EditText
+            android:id="@+id/emailEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="15dp"
+            android:hint="Enter email"
+            android:layout_gravity="center"/>
 
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="15dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PASSWORD"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CONFIRM PASSWORD"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="30dp" />
+        <EditText
+            android:id="@+id/passwordEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="15dp"
+            android:hint="Enter password"
+            android:layout_gravity="center"/>
 
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="15dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CONFIRM PASSWORD"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"/>
 
-    <Button
-        android:id="@+id/sgnbtn"
-        android:layout_marginTop="30dp"
-        android:layout_width="300dp"
-        android:text="Sign up"
-        android:textStyle="bold"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp" />
+        <EditText
+            android:id="@+id/cPasswordEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="15dp"
+            android:layout_gravity="center"
+            android:hint="Confirm password"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signUpBtn"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="SIGN UP"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            app:cornerRadius="10dp"/>
+    </LinearLayout>
+
+
 
 </LinearLayout>
