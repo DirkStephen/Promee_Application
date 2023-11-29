@@ -3,6 +3,8 @@ package com.example.signupui;
 public class UserDataClass {
     String userId, username, email;
 
+    public UserDataClass(){}
+
     public UserDataClass(String userId, String username, String email) {
         this.userId = userId;
         this.username = username;
