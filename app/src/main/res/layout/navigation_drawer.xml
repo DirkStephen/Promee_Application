@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blacked"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/backbtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/backbtn" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/yellow"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:id="@+id/profile"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:text="Profile"
+            android:textColor="@color/yellow"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/yellow"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:id="@+id/friends"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:text="Friends"
+            android:textColor="@color/yellow"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/yellow"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:id="@+id/groups"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:text="Groups"
+            android:textColor="@color/yellow"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/yellow"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:id="@+id/settings"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:text="Settings"
+            android:textColor="@color/yellow"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/yellow"
+        android:orientation="horizontal" />
+
+
+    <LinearLayout
+        android:id="@+id/help"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:text="Help"
+            android:textColor="@color/yellow"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/yellow"
+        android:orientation="horizontal" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/logout"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/yellow"
+        android:text="LOG OUT"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:cornerRadius="5dp" />
+
+
+</LinearLayout>
