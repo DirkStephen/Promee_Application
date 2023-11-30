@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
      void gotoHome(){
-        Intent intent = new Intent(this, HomeActivitySample.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
         finish();
     }

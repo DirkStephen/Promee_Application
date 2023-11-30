@@ -23,7 +23,6 @@ public class HomeActivitySample extends AppCompatActivity {
     TextView usernameTv, emailtv;
     String username, email, userId;
     Button logoutBtn;
-    UserDataClass userData;
 
     //Firebase Initialization;
     private FirebaseAuth mAuth;
