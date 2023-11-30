@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         passwordEt = findViewById(R.id.passwordEt);
         cPasswordEt = findViewById(R.id.cPasswordEt);
         signUpBtn = findViewById(R.id.signUpBtn);
+        loginTv = findViewById(R.id.loginTv);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -56,15 +57,16 @@ public class MainActivity extends AppCompatActivity {
 
             if(userNameInput.isEmpty() || emailInput.isEmpty() || passwordInput.isEmpty() || cPasswordInput.isEmpty()){
                 Toast.makeText(MainActivity.this, "Some fields are empty.", Toast.LENGTH_SHORT).show();
-                return;
             }else if(!passwordInput.equals(cPasswordInput)){
                 Toast.makeText(MainActivity.this, "Password does not match.", Toast.LENGTH_SHORT).show();
-                return;
             }else{
 
                 SignUp(userNameInput, emailInput, passwordInput);
             }
 
+        });
+        loginTv.setOnClickListener(view -> {
+            gotoLogin();
         });
 
     }
@@ -107,6 +109,12 @@ public class MainActivity extends AppCompatActivity {
     }
      void gotoHome(){
         Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    void gotoLogin(){
+
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }

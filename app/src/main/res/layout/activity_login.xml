@@ -35,15 +35,15 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="USERNAME"
+            android:text="EMAIL"
             android:textStyle="bold"
             android:textSize="15sp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"/>
 
         <EditText
-            android:id="@+id/usernameEt"
-            android:hint="Enter username"
+            android:id="@+id/emailEt"
+            android:hint="Enter email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:padding="15dp"
