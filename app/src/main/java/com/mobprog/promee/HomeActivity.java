@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
     //Firebase Initialization;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
-    private DatabaseReference rootDtb, userDtb;
+    private DatabaseReference root, user_name;
 
     //Data reader
     ValueEventListener readUserData;
@@ -70,8 +70,8 @@ public class HomeActivity extends AppCompatActivity {
 
         //initialize components for database
         //realtime database
-        rootDtb = FirebaseDatabase.getInstance().getReference();
-        userDtb = rootDtb.child("users").child(userId);
+        root = FirebaseDatabase.getInstance().getReference();
+        user_name = root.child("users").child(userId);
         readUserData = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -88,7 +88,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         };
 
-        userDtb.addValueEventListener(readUserData);
+        user_name.addValueEventListener(readUserData);
     }
 
     @Override
@@ -103,7 +103,7 @@ public class HomeActivity extends AppCompatActivity {
         });
         logoutBtn.setOnClickListener(view -> {
             FirebaseAuth.getInstance().signOut();
-            userDtb.removeEventListener(readUserData);
+            user_name.removeEventListener(readUserData);
             gotoLogin();
         });
     }

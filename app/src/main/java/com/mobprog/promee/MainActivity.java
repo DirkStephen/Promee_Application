@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     //Firebase initialization
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
-    private DatabaseReference rootDtb;
+    private DatabaseReference root, user_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
                                 userId = user.getUid();
-                                rootDtb = FirebaseDatabase.getInstance().getReference();
+                                root = FirebaseDatabase.getInstance().getReference();
                                 writeNewUser(userId, userNameInput, emailInput);
                                 // Now 'userId' contains the unique identifier for the newly created user
                                 Toast.makeText(MainActivity.this, "User ID:"+userId, Toast.LENGTH_SHORT).show();
@@ -116,8 +116,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void writeNewUser(String userId, String username, String email) {
         UserDataClass user = new UserDataClass(username, email);
-
-        rootDtb.child("users").child(userId).setValue(user);
+        user_name = root.child("users").child(userId);
+        user_name.setValue(user);
     }
 
 
