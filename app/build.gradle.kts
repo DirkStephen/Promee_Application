@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.signupui"
+    namespace = "com.mobprog.promee"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.signupui"
+        applicationId = "com.mobprog.promee"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

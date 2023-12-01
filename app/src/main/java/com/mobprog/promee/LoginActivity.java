@@ -1,4 +1,4 @@
-package com.example.signupui;
+package com.mobprog.promee;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

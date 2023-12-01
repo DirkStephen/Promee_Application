@@ -1,4 +1,4 @@
-package com.example.signupui;
+package com.mobprog.promee;
 
 public class UserDataClass {
     String username, email;

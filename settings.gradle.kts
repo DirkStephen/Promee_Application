@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SignUp UI"
+rootProject.name = "Promee"
 include(":app")
  
