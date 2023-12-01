@@ -1,33 +1,14 @@
 {
   "project_info": {
-    "project_number": "263759402456",
-    "firebase_url": "https://promee-base-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "promee-base",
-    "storage_bucket": "promee-base.appspot.com"
+    "project_number": "71366239565",
+    "firebase_url": "https://promee-id-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "promee-id",
+    "storage_bucket": "promee-id.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:263759402456:android:725d1d373f709c83388ead",
-        "android_client_info": {
-          "package_name": "com.example.signupui"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBFj07chMUGS95bfUAGcrcqB-ijPFaLWTE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:263759402456:android:89ffd14bce89550e388ead",
+        "mobilesdk_app_id": "1:71366239565:android:67f8b86fcebb7b57654304",
         "android_client_info": {
           "package_name": "com.mobprog.promee"
         }
@@ -35,26 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBFj07chMUGS95bfUAGcrcqB-ijPFaLWTE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:263759402456:android:9f2d1eee22b4ced7388ead",
-        "android_client_info": {
-          "package_name": "com.mobprog.promee_main"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBFj07chMUGS95bfUAGcrcqB-ijPFaLWTE"
+          "current_key": "AIzaSyA6Cyz9CSqFfr6IZnI-khD6EI4C2AnHuSs"
         }
       ],
       "services": {
