@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
+import androidx.viewpager2.widget.ViewPager2;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -14,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -38,11 +42,14 @@ public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
     private DatabaseReference root, user_name;
-
+    private TabLayout tabLayout;
+    private ViewPager2 viewPager2;
+    private MyFragmentAdapter adapter;
     //Data reader
     ValueEventListener readUserData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
@@ -91,9 +98,46 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Error!", Toast.LENGTH_SHORT).show();
             }
         };
-
         user_name.addValueEventListener(readUserData);
+
+        //Forda tab bar
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager2 = findViewById(R.id.viewPager2);
+
+        tabLayout.addTab(tabLayout.newTab().setText("To do"));
+        tabLayout.addTab(tabLayout.newTab().setText("Doing"));
+        tabLayout.addTab(tabLayout.newTab().setText("Done"));
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        adapter = new MyFragmentAdapter(fragmentManager , getLifecycle());
+        viewPager2.setAdapter(adapter);
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager2.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout.selectTab(tabLayout.getTabAt(position));
+            }
+        });
+
     }
+
 
     @Override
     protected void onStart() {
@@ -120,9 +164,12 @@ public class HomeActivity extends AppCompatActivity {
         help.setOnClickListener(view ->{
             gotoHelp();
         });
-        groups.setOnClickListener((view ->{
+        groups.setOnClickListener(view ->{
             gotoGroups();
-        }));
+        });
+        profile.setOnClickListener(view ->{
+            gotoProfile();
+        });
     }
     public static void openDrawer(DrawerLayout drawerLayout) {
         drawerLayout.openDrawer(GravityCompat.START);
@@ -151,6 +198,10 @@ public class HomeActivity extends AppCompatActivity {
     }
     void gotoGroups(){
         Intent i = new Intent(HomeActivity.this, GroupPage.class);
+        startActivity(i);
+    }
+    void gotoProfile(){
+        Intent i = new Intent(HomeActivity.this, ProfilePage.class);
         startActivity(i);
     }
 
