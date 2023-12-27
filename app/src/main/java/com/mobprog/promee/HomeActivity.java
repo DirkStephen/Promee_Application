@@ -5,12 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,15 +31,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+
 public class HomeActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
-    ImageView menu;
-    ImageView backbtn;
+    ImageView menu, backbtn;
     LinearLayout profile, friends, groups, settings, help;
     Button logoutBtn, cancelbtn;
     TextView usernameTv, emailtv;
     String username, email, userId;
+
+    //Create Task
+    Dialog dialog;
+    EditText taskName, taskNote, date, startTime, endTime;
+    Button dCancelBtn, dCreateBtn;
+
 
     FloatingActionButton fab;
 
@@ -41,6 +57,7 @@ public class HomeActivity extends AppCompatActivity {
 
     //Data reader
     ValueEventListener readUserData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,18 +73,44 @@ public class HomeActivity extends AppCompatActivity {
         help = findViewById(R.id.help);
         logoutBtn = findViewById(R.id.logoutBtn);
         backbtn = findViewById(R.id.backbtn);
-        fab = findViewById(R.id.fab);
-        cancelbtn = findViewById(R.id.cancelbtn);
+
         //initialize components for content
         usernameTv = findViewById(R.id.userNameTv);
         emailtv = findViewById(R.id.emailTv);
 
+        //create task
+        taskName = findViewById(R.id.taskName);
+        taskNote = findViewById(R.id.taskNote);
+        date = findViewById(R.id.taskDate);
+        startTime = findViewById(R.id.startTime);
+        endTime = findViewById(R.id.endTime);
+        dCancelBtn = findViewById(R.id.dCancelBtn);
+        dCreateBtn = findViewById(R.id.dCreateBtn);
+
+        //dialog box
+        fab = findViewById(R.id.fab);
+
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.create_task_dialog);
+        dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.dialog_background));
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        dialog.setCancelable(false);
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        layoutParams.copyFrom(dialog.getWindow().getAttributes());
+        layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT; // Specify desired width
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT; // Specify desired height
+        dialog.getWindow().setAttributes(layoutParams);
+
+        fab.setOnClickListener(view -> {
+            dialog.show();
+        });
+
         //authentication
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
-        if(currentUser == null){
+        if (currentUser == null) {
             gotoLogin();
-        }else{
+        } else {
             //display
             userId = currentUser.getUid();
         }
@@ -93,14 +136,17 @@ public class HomeActivity extends AppCompatActivity {
         };
 
         user_name.addValueEventListener(readUserData);
+
+        //dialog
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        menu.setOnClickListener(view ->
-                 {openDrawer(drawerLayout);}
-        );
+        menu.setOnClickListener(view -> {
+            openDrawer(drawerLayout);
+        });
 
         backbtn.setOnClickListener(view -> {
             closeDrawer(drawerLayout);
@@ -110,46 +156,44 @@ public class HomeActivity extends AppCompatActivity {
             user_name.removeEventListener(readUserData);
             gotoLogin();
         });
-
-        fab.setOnClickListener(view ->{
-            Create();
-        });
-        settings.setOnClickListener(view ->{
+        settings.setOnClickListener(view -> {
             gotoSettings();
         });
-        help.setOnClickListener(view ->{
+        help.setOnClickListener(view -> {
             gotoHelp();
         });
-        groups.setOnClickListener((view ->{
+        groups.setOnClickListener((view -> {
             gotoGroups();
         }));
     }
+
     public static void openDrawer(DrawerLayout drawerLayout) {
         drawerLayout.openDrawer(GravityCompat.START);
     }
+
     public static void closeDrawer(DrawerLayout drawerLayout) {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
     }
-    void gotoLogin(){
+
+    void gotoLogin() {
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
         finish();
     }
-    void Create(){
-        Intent i = new Intent(HomeActivity.this, CreateTasks.class);
-        startActivity(i);
-    }
-    void gotoSettings(){
+
+    void gotoSettings() {
         Intent i = new Intent(HomeActivity.this, SettingsPage.class);
         startActivity(i);
     }
-    void gotoHelp(){
+
+    void gotoHelp() {
         Intent i = new Intent(HomeActivity.this, HelpPage.class);
         startActivity(i);
     }
-    void gotoGroups(){
+
+    void gotoGroups() {
         Intent i = new Intent(HomeActivity.this, GroupPage.class);
         startActivity(i);
     }
