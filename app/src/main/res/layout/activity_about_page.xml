@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/aboutContent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".AboutPage">
+
+    <TextView
+        android:id="@+id/aboutTextView"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:background="#FF9800"
+        android:gravity="center"
+        android:text="About"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/exit_button"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="exit"
+        android:onClick="onSettingsPage"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:srcCompat="@drawable/back_button"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/aboutPromeeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="128dp"
+        android:text="About Promee"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutTextView" />
+
+    <TextView
+        android:id="@+id/meetText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="123dp"
+        android:text="Meet our team:"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView" />
+
+    <TextView
+        android:id="@+id/welcomeTextView"
+        android:layout_width="269dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="71dp"
+        android:text="Welcome to Promee, your go-to resource for time management success! We are aware that time is one of your most  valuable resources in the fast-paced world of today. We have therefore developed a potent and simple-to-use time management solution to assist you in making the most of every moment"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutPromeeText" />
+
+    <TextView
+        android:id="@+id/ourText"
+        android:layout_width="290dp"
+        android:layout_height="123dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="16dp"
+        android:text="Our time management system application is the product of eight outstanding Computer Science Students who worked tirelessly and with commitment to create the project.                 Our developers are dedicated about developing cutting edge solutions that enable users to make the most of their time"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/peopleText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/meetText" />
+
+    <TextView
+        android:id="@+id/peopleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="89dp"
+        android:text="Discover the people behind the code:"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ourText" />
+
+    <TextView
+        android:id="@+id/namesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="159dp"
+        android:text="1. Name - Role \n2. Name - Role \n3. Name - Role \n4. Name - Role \n5. Name - Role \n6. Name - Role \n7. Name - Role \n8. Name - Role"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/peopleText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

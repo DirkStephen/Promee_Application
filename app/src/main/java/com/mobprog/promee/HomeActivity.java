@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,9 +28,11 @@ public class HomeActivity extends AppCompatActivity {
     ImageView menu;
     ImageView backbtn;
     LinearLayout profile, friends, groups, settings, help;
-    Button logoutBtn;
+    Button logoutBtn, cancelbtn;
     TextView usernameTv, emailtv;
     String username, email, userId;
+
+    FloatingActionButton fab;
 
     //Firebase Initialization;
     private FirebaseAuth mAuth;
@@ -53,7 +56,8 @@ public class HomeActivity extends AppCompatActivity {
         help = findViewById(R.id.help);
         logoutBtn = findViewById(R.id.logoutBtn);
         backbtn = findViewById(R.id.backbtn);
-
+        fab = findViewById(R.id.fab);
+        cancelbtn = findViewById(R.id.cancelbtn);
         //initialize components for content
         usernameTv = findViewById(R.id.userNameTv);
         emailtv = findViewById(R.id.emailTv);
@@ -106,6 +110,19 @@ public class HomeActivity extends AppCompatActivity {
             user_name.removeEventListener(readUserData);
             gotoLogin();
         });
+
+        fab.setOnClickListener(view ->{
+            Create();
+        });
+        settings.setOnClickListener(view ->{
+            gotoSettings();
+        });
+        help.setOnClickListener(view ->{
+            gotoHelp();
+        });
+        groups.setOnClickListener((view ->{
+            gotoGroups();
+        }));
     }
     public static void openDrawer(DrawerLayout drawerLayout) {
         drawerLayout.openDrawer(GravityCompat.START);
@@ -120,4 +137,21 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    void Create(){
+        Intent i = new Intent(HomeActivity.this, CreateTasks.class);
+        startActivity(i);
+    }
+    void gotoSettings(){
+        Intent i = new Intent(HomeActivity.this, SettingsPage.class);
+        startActivity(i);
+    }
+    void gotoHelp(){
+        Intent i = new Intent(HomeActivity.this, HelpPage.class);
+        startActivity(i);
+    }
+    void gotoGroups(){
+        Intent i = new Intent(HomeActivity.this, GroupPage.class);
+        startActivity(i);
+    }
+
 }

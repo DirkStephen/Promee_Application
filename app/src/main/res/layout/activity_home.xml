@@ -34,6 +34,18 @@
                 android:layout_margin="20dp"
                 android:layout_below="@id/userNameTv"/>
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="40dp"
+                android:src="@drawable/add"
+                app:backgroundTint="#FFB800"/>
         </RelativeLayout>
     </RelativeLayout>
 

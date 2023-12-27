@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blacked">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:src="@drawable/yellowbox"
+        android:layout_marginTop="-25dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/group_collab"
+        android:text="Group Collab"
+        android:textSize="25sp"
+        android:fontFamily="@font/ericaone"
+        android:textColor="@color/black"
+
+        />
+
+      <ImageView
+          android:layout_width="40dp"
+          android:layout_height="wrap_content"
+          android:src="@drawable/backbtnskii"
+          android:layout_alignParentEnd="true"
+          android:layout_marginTop="5dp"
+          android:layout_marginRight="15dp"
+          />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/blackline"
+        android:layout_marginTop="70dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/creategrroup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        />
+
+</RelativeLayout>
