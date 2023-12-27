@@ -17,6 +17,10 @@
         <activity
             android:name=".CreateTasks"
             android:exported="true" />
+        <activity android:name=".EditProfile"
+            android:exported="true"/>
+        <activity android:name=".ProfilePage"
+            android:exported="true"/>
         <activity android:name=".SettingsPage"
             android:exported="true"/>
         <activity android:name=".AboutPage"

@@ -55,7 +55,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Some fields are empty.", Toast.LENGTH_SHORT).show();
             }else if(!passwordInput.equals(cPasswordInput)){
                 Toast.makeText(MainActivity.this, "Password does not match.", Toast.LENGTH_SHORT).show();
-            }else{
+            }
+            //RegEx (/^(?=.*\d)(?=.*[A-Z])([@$%&#])[0-9a-zA-Z]{4,}$/)
+            //Pass should contain one digit, one spec char, one uppercase char, and 8 chars long
+            else{
 
                 SignUp(userNameInput, emailInput, passwordInput);
             }

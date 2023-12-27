@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfilePage"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#FFB800"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/ericaone"
+                android:text="Profile"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="20sp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30sp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:src="@drawable/profilepic"
+                    android:layout_marginStart="35sp"/>
+                <TextView
+                    android:id="@+id/usernameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Name"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginStart="75dp"
+                    />
+                <TextView
+                    android:id="@+id/emailTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="email@gmail.com"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginStart="-125dp"
+                    />
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="145dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-155dp"
+                    android:layout_marginTop="95dp"
+                    android:background="@drawable/btn_edit"
+                    android:text="Edit Profile"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="378dp"
+        android:layout_height="280dp"
+        android:layout_marginTop="265dp"
+        android:layout_marginStart="-395dp"
+        android:background="@drawable/brd">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="376dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="267dp"
+        android:layout_marginStart="-377dp"
+        android:background="@drawable/achievements_list">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Achievements"
+            android:textColor="@color/black"
+            android:fontFamily="@font/dm_sans"
+            android:textStyle="bold"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="12dp"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
