@@ -34,6 +34,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mobprog.promee.service.AuthenticationService;
+import com.mobprog.promee.service.TaskCrudService;
 
 import java.util.Calendar;
 
@@ -43,9 +44,9 @@ public class HomeActivity extends AppCompatActivity {
     ImageView menu, backbtn;
     LinearLayout profile, friends, groups, settings, help;
     Button logoutBtn, cancelbtn;
-    TextView usernameTv, emailtv;
+    TextView tnameTv, tdateTv, tstartTv, tendTv, tnoteTv;
     String username, email, userId;
-
+    String tname, tdate, tstart, tend, tnote;
     //Create Task
     Dialog dialog;
     EditText taskName, taskNote, date, startTime, endTime;
@@ -63,6 +64,7 @@ public class HomeActivity extends AppCompatActivity {
     ValueEventListener readUserData;
 
     AuthenticationService authService;
+    TaskCrudService taskCrudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +72,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //initialize components for navigation drawer
         authService = new AuthenticationService(this);
+        CheckUser();
+        taskCrudService = new TaskCrudService(userId, this);
 
+        //initialize components for navigation drawer
         drawerLayout = findViewById(R.id.drawerLayout);
         menu = findViewById(R.id.menu_icon);
         profile = findViewById(R.id.profile);
@@ -82,13 +86,6 @@ public class HomeActivity extends AppCompatActivity {
         help = findViewById(R.id.help);
         logoutBtn = findViewById(R.id.logoutBtn);
         backbtn = findViewById(R.id.backbtn);
-
-        //initialize components for content
-        usernameTv = findViewById(R.id.userNameTv);
-        emailtv = findViewById(R.id.emailTv);
-
-
-
 
         //dialog box
         fab = findViewById(R.id.fab);
@@ -124,6 +121,8 @@ public class HomeActivity extends AppCompatActivity {
             String task_date = date.getText().toString();
             String task_start = startTime.getText().toString();
             String task_end = endTime.getText().toString();
+
+            taskCrudService.createNewTask(task_name, task_date, task_start, task_end, task_note);
             dialog.dismiss();
         });
         dCancelBtn.setOnClickListener(view -> {
@@ -181,34 +180,14 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        //read task
+        tnameTv = findViewById(R.id.tnameTv);
+        tdateTv = findViewById(R.id.tdateTv);
+        tstartTv = findViewById(R.id.tstartTv);
+        tendTv = findViewById(R.id.tendTv);
+        tnoteTv = findViewById(R.id.tnoteTv);
 
-        //authentication
-        if(authService.CheckUserLoggedIn()){
-            userId = authService.getUserId();
-        }else{
-            authService.gotoLogin();
-        }
 
-        //initialize components for database
-        //realtime database
-        root = FirebaseDatabase.getInstance().getReference();
-        user_name = root.child("users").child(userId);
-        readUserData = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserDataClass userData = snapshot.getValue(UserDataClass.class);
-                username = userData.getUsername();
-                email = userData.getEmail();
-                usernameTv.setText(username);
-                emailtv.setText(email);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(), "Error!", Toast.LENGTH_SHORT).show();
-            }
-        };
-        user_name.addValueEventListener(readUserData);
 
   //dialog
   //Forda tab bar
@@ -314,6 +293,27 @@ public class HomeActivity extends AppCompatActivity {
     void gotoProfile(){
         Intent i = new Intent(HomeActivity.this, ProfilePage.class);
         startActivity(i);
+    }
+    void CheckUser(){
+        if(authService.CheckUserLoggedIn()){
+            userId = authService.getUserId();
+        }else{
+            authService.gotoLogin();
+        }
+    }
+    void ReadTask(){
+//        taskCrudService.readTask();
+//        tname = taskCrudService.getTname();
+//        tdate = taskCrudService.getTdate();
+//        tstart = taskCrudService.getTstart();
+//        tend = taskCrudService.getTend();
+//        tnote = taskCrudService.getTnote();
+
+        tnameTv.setText(tname);
+        tdateTv.setText(tdate);
+        tstartTv.setText(tstart);
+        tendTv.setText(tend);
+        tnoteTv.setText(tnote);
     }
 
 }
