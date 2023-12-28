@@ -121,6 +121,8 @@ public class MainActivity extends AppCompatActivity {
         UserDataClass user = new UserDataClass(username, email);
         user_name = root.child("users").child(userId);
         user_name.setValue(user);
+
+
     }
 
 

@@ -22,19 +22,23 @@
             <com.google.android.material.tabs.TabLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginStart="50dp"
                 android:id="@+id/tabLayout"
                 app:tabMode="fixed"
                 app:tabGravity="fill"
                 app:tabIndicatorGravity="stretch"
                 app:tabSelectedTextColor="@color/white"
                 app:tabIndicatorAnimationMode="elastic"
-
-                app:tabIndicator="@drawable/carousel"/>
+                android:contentDescription="tablayout"
+                app:tabIndicator="@drawable/carousel"
+                android:background="@color/yellow" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/viewPager2"/>
+                android:id="@+id/viewPager2" />
             <TextView
                 android:id="@+id/userNameTv"
                 android:layout_width="wrap_content"

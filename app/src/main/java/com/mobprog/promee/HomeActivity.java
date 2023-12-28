@@ -2,6 +2,7 @@ package com.mobprog.promee;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +42,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Calendar;
 
 public class HomeActivity extends AppCompatActivity {
-
     DrawerLayout drawerLayout;
     ImageView menu, backbtn;
     LinearLayout profile, friends, groups, settings, help;
@@ -87,7 +88,14 @@ public class HomeActivity extends AppCompatActivity {
         usernameTv = findViewById(R.id.userNameTv);
         emailtv = findViewById(R.id.emailTv);
 
-
+        //create task
+        taskName = findViewById(R.id.taskName);
+        taskNote = findViewById(R.id.taskNote);
+        date = findViewById(R.id.taskDate);
+        startTime = findViewById(R.id.startTime);
+        endTime = findViewById(R.id.endTime);
+        dCancelBtn = findViewById(R.id.dCancelBtn);
+        dCreateBtn = findViewById(R.id.dCreateBtn);
 
 
         //dialog box
@@ -95,17 +103,6 @@ public class HomeActivity extends AppCompatActivity {
 
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.create_task_dialog);
-
-        dCancelBtn = dialog.findViewById(R.id.dCancelBtn);
-        dCreateBtn = dialog.findViewById(R.id.dCreateBtn);
-
-        //create task
-        taskName = dialog.findViewById(R.id.taskName);
-        taskNote = dialog.findViewById(R.id.taskNote);
-        date = dialog.findViewById(R.id.taskDate);
-        startTime = dialog.findViewById(R.id.startTime);
-        endTime = dialog.findViewById(R.id.endTime);
-
         dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.dialog_background));
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         dialog.setCancelable(false);
@@ -118,69 +115,6 @@ public class HomeActivity extends AppCompatActivity {
         fab.setOnClickListener(view -> {
             dialog.show();
         });
-        dCreateBtn.setOnClickListener(view -> {
-            String task_name = taskName.getText().toString();
-            String task_note = taskNote.getText().toString();
-            String task_date = date.getText().toString();
-            String task_start = startTime.getText().toString();
-            String task_end = endTime.getText().toString();
-            dialog.dismiss();
-        });
-        dCancelBtn.setOnClickListener(view -> {
-            dialog.dismiss();
-        });
-        date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                int day = c.get(Calendar.DAY_OF_MONTH);
-
-
-                DatePickerDialog datePickerDialog = new DatePickerDialog(dialog.getContext(),R.style.DatePicker, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        date.setText(dayOfMonth + "-" + (month + 1) + "-" + year);
-                    }
-                },  year, month, day);
-                datePickerDialog.show();
-            }
-        });
-        startTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar c = Calendar.getInstance();
-                int hour = c.get(Calendar.HOUR_OF_DAY);
-                int minute = c.get(Calendar.MINUTE);
-
-                TimePickerDialog timePickerDialog = new TimePickerDialog(dialog.getContext(),R.style.DatePicker, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        startTime.setText(hourOfDay + ":" + minute);
-                    }
-                }, hour, minute, false);
-                timePickerDialog.show();
-            }
-        });
-        endTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar c = Calendar.getInstance();
-                int hour = c.get(Calendar.HOUR_OF_DAY);
-                int minute = c.get(Calendar.MINUTE);
-
-                TimePickerDialog timePickerDialog = new TimePickerDialog(dialog.getContext(), R.style.DatePicker, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        endTime.setText(hourOfDay + ":" + minute);
-                    }
-                }, hour, minute, false);
-                timePickerDialog.show();
-
-            }
-        });
-
 
         //authentication
         mAuth = FirebaseAuth.getInstance();
@@ -249,8 +183,6 @@ public class HomeActivity extends AppCompatActivity {
                 tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
-
-
 
     }
 
