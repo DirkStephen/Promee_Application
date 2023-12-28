@@ -300,7 +300,6 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
     void gotoSettings() {
         Intent i = new Intent(HomeActivity.this, SettingsPage.class);
         startActivity(i);
