@@ -17,8 +17,24 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar">
+            <com.google.android.material.tabs.TabLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/tabLayout"
+                app:tabMode="fixed"
+                app:tabGravity="fill"
+                app:tabIndicatorGravity="stretch"
+                app:tabSelectedTextColor="@color/white"
+                app:tabIndicatorAnimationMode="elastic"
 
+                app:tabIndicator="@drawable/carousel"/>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/viewPager2"/>
             <TextView
                 android:id="@+id/userNameTv"
                 android:layout_width="wrap_content"
@@ -45,7 +61,8 @@
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="40dp"
                 android:src="@drawable/add"
-                app:backgroundTint="#FFB800"/>
+                app:backgroundTint="#FFB800"
+                android:contentDescription="create task"/>
         </RelativeLayout>
     </RelativeLayout>
 
