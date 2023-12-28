@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.SignUpUI" parent="Base.Theme.Promee" />
+
+    <style name="DatePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">#FFB800</item>
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
 </resources>
