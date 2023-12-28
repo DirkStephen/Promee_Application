@@ -98,5 +98,10 @@ public class AuthenticationService {
         activity.startActivity(intent);
         activity.finish();
     }
+    public void gotoLogin(){
+        Intent intent = new Intent(activity, LoginActivity.class);
+        activity.startActivity(intent);
+        activity.finish();
+    }
 
 }

@@ -10,9 +10,7 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 
 import androidx.viewpager2.widget.ViewPager2;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -30,12 +28,12 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mobprog.promee.service.AuthenticationService;
 
 import java.util.Calendar;
 
@@ -57,14 +55,14 @@ public class HomeActivity extends AppCompatActivity {
     FloatingActionButton fab;
 
     //Firebase Initialization;
-    private FirebaseAuth mAuth;
-    private FirebaseUser currentUser;
     private DatabaseReference root, user_name;
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;
     private MyFragmentAdapter adapter;
     //Data reader
     ValueEventListener readUserData;
+
+    AuthenticationService authService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +71,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         //initialize components for navigation drawer
+        authService = new AuthenticationService(this);
+
         drawerLayout = findViewById(R.id.drawerLayout);
         menu = findViewById(R.id.menu_icon);
         profile = findViewById(R.id.profile);
@@ -183,13 +183,10 @@ public class HomeActivity extends AppCompatActivity {
 
 
         //authentication
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-        if (currentUser == null) {
-            gotoLogin();
-        } else {
-            //display
-            userId = currentUser.getUid();
+        if(authService.CheckUserLoggedIn()){
+            userId = authService.getUserId();
+        }else{
+            authService.gotoLogin();
         }
 
         //initialize components for database

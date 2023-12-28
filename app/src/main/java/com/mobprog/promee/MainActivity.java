@@ -39,13 +39,8 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         CheckUser();
-        loginTv.setOnClickListener(view -> gotoLogin());
+        loginTv.setOnClickListener(view -> authService.gotoLogin());
         signUpBtn.setOnClickListener(view -> SignUp());
-    }
-    public void gotoLogin(){
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
     }
     void SignUp(){
         userNameInput = usernameEt.getText().toString();
