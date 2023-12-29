@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         if(authService.CheckUserLoggedIn()){
             authService.gotoHome();
         }
+
     }
 
 
