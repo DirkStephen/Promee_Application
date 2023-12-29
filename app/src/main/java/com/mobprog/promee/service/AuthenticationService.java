@@ -15,8 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.mobprog.promee.HomeActivity;
 import com.mobprog.promee.LoginActivity;
-import com.mobprog.promee.MainActivity;
-import com.mobprog.promee.UserDataClass;
+import com.mobprog.promee.model.UserDataClass;
 
 public class AuthenticationService {
 
