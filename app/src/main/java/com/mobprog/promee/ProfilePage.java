@@ -10,27 +10,30 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mobprog.promee.model.UserDataClass;
+import com.mobprog.promee.service.AuthenticationService;
 
 public class ProfilePage extends AppCompatActivity {
     String username, email, userId;
-    private FirebaseAuth mAuth;
-    private FirebaseUser currentUser;
     private DatabaseReference root, user_name;
     private Button button;
     ValueEventListener readUserData;
     TextView usernameTV, emailTV;
 
+    AuthenticationService authService;
+    HomeActivity homeActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        authService = new AuthenticationService(this);
 
         button = (Button) findViewById(R.id.button);
         usernameTV = findViewById(R.id.usernameTV);
@@ -41,15 +44,8 @@ public class ProfilePage extends AppCompatActivity {
                 openEditProfile();
             }
         });
-        //authentication
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-        if(currentUser == null){
 
-        }else{
-            //display
-            userId = currentUser.getUid();
-        }
+        CheckUser();
         //initialize components for database
         //realtime database
         root = FirebaseDatabase.getInstance().getReference();
@@ -74,5 +70,13 @@ public class ProfilePage extends AppCompatActivity {
     public void openEditProfile(){
         Intent intent = new Intent(this, EditProfile.class);
         startActivity(intent);
+    }
+
+    void CheckUser() {
+        if (authService.CheckUserLoggedIn()) {
+            userId = authService.getUserId();
+        } else {
+            homeActivity.gotoLogin();
+        }
     }
 }
