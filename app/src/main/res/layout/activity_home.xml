@@ -26,12 +26,12 @@
                 android:layout_marginEnd="50dp"
                 android:layout_marginStart="50dp"
                 android:id="@+id/tabLayout"
+                android:contentDescription="tablayout"
                 app:tabMode="fixed"
                 app:tabGravity="fill"
                 app:tabIndicatorGravity="stretch"
                 app:tabSelectedTextColor="@color/white"
                 app:tabIndicatorAnimationMode="elastic"
-                android:contentDescription="tablayout"
                 app:tabIndicator="@drawable/carousel"
                 android:background="@color/yellow" />
 
@@ -53,6 +53,46 @@
                 android:layout_centerHorizontal="true"
                 android:layout_margin="20dp"
                 android:layout_below="@id/userNameTv"/>
+                android:id="@+id/viewPager2"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tnameTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="20dp" />
+                <TextView
+                    android:id="@+id/tdateTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="20dp"/>
+                <TextView
+                    android:id="@+id/tstartTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="20dp" />
+                <TextView
+                    android:id="@+id/tendTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="20dp"/>
+                <TextView
+                    android:id="@+id/tnoteTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="20dp" />
+            </LinearLayout>
+
+
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab"

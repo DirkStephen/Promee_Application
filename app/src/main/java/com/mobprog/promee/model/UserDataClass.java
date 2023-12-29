@@ -1,4 +1,4 @@
-package com.mobprog.promee;
+package com.mobprog.promee.model;
 
 public class UserDataClass {
     String username, email;
