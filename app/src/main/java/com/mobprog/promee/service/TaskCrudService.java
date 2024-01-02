@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mobprog.promee.HomeActivity;
 import com.mobprog.promee.model.TaskDataClass;
 
 public class TaskCrudService {
@@ -42,7 +43,6 @@ public class TaskCrudService {
                         Toast.makeText(activity, "Task failed to cr eate.", Toast.LENGTH_SHORT).show();
                     }
                 });
-
     }
 
 //    public void readTask() {
