@@ -1,5 +1,8 @@
 package com.mobprog.promee;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -22,7 +25,7 @@ public class MyFragmentAdapter extends FragmentStateAdapter {
         } else if (position==2) {
             return new DoingFragment();
         }else
-        return new DoingFragment();
+        return new DoneFragment();
     }
 
     @Override

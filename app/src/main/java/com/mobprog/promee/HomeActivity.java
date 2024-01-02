@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -129,12 +130,28 @@ public class HomeActivity extends AppCompatActivity {
             String task_start = startTime.getText().toString();
             String task_end = endTime.getText().toString();
 
-            taskCrudService.createNewTask(task_name, task_date, task_start, task_end, task_note);
+            if(task_name.equals("") || task_date.equals("")){
+                Toast.makeText(getApplicationContext(), "Some fields are empty", Toast.LENGTH_SHORT).show();
+            }else{
+                taskCrudService.createNewTask(task_name, task_date, task_start, task_end, task_note);
+                readTask();
+            }
+
             dialog.dismiss();
-            readTask();
+
+            taskName.getText().clear();
+            date.getText().clear();
+            taskNote.getText().clear();
+            startTime.getText().clear();
+            endTime.getText().clear();
         });
         dCancelBtn.setOnClickListener(view -> {
             dialog.dismiss();
+            taskName.getText().clear();
+            date.getText().clear();
+            taskNote.getText().clear();
+            startTime.getText().clear();
+            endTime.getText().clear();
         });
         date.setOnClickListener(new View.OnClickListener() {
             @Override
