@@ -1,6 +1,7 @@
 package com.mobprog.promee;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -9,6 +10,8 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 import androidx.fragment.app.FragmentManager;
 import android.content.Intent;
@@ -21,9 +24,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -33,10 +34,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mobprog.promee.model.TaskDataClass;
 import com.mobprog.promee.service.AuthenticationService;
 import com.mobprog.promee.service.TaskCrudService;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -44,19 +48,20 @@ public class HomeActivity extends AppCompatActivity {
     ImageView menu, backbtn;
     LinearLayout profile, friends, groups, settings, help;
     Button logoutBtn, cancelbtn;
-    TextView tnameTv, tdateTv, tstartTv, tendTv, tnoteTv;
     String username, email, userId;
     String tname, tdate, tstart, tend, tnote;
     //Create Task
     Dialog dialog;
     EditText taskName, taskNote, date, startTime, endTime;
     Button dCancelBtn, dCreateBtn;
-
+    RecyclerView recyclerView;
+    List<TaskDataClass> dataList;
+    MyAdapter adapterCT;
 
     FloatingActionButton fab;
 
     //Firebase Initialization;
-    private DatabaseReference root, user_name;
+    private DatabaseReference root, user, backlog;
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;
     private MyFragmentAdapter adapter;
@@ -103,6 +108,8 @@ public class HomeActivity extends AppCompatActivity {
         startTime = dialog.findViewById(R.id.startTime);
         endTime = dialog.findViewById(R.id.endTime);
 
+        recyclerView = findViewById(R.id.recyclerView);
+
         dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.dialog_background));
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         dialog.setCancelable(false);
@@ -124,6 +131,7 @@ public class HomeActivity extends AppCompatActivity {
 
             taskCrudService.createNewTask(task_name, task_date, task_start, task_end, task_note);
             dialog.dismiss();
+            readTask();
         });
         dCancelBtn.setOnClickListener(view -> {
             dialog.dismiss();
@@ -181,13 +189,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         //read task
-        tnameTv = findViewById(R.id.tnameTv);
-        tdateTv = findViewById(R.id.tdateTv);
-        tstartTv = findViewById(R.id.tstartTv);
-        tendTv = findViewById(R.id.tendTv);
-        tnoteTv = findViewById(R.id.tnoteTv);
-
-
 
   //dialog
   //Forda tab bar
@@ -225,9 +226,37 @@ public class HomeActivity extends AppCompatActivity {
                 tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
+    }
+    void readTask(){
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(HomeActivity.this, 1);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+        builder.setCancelable(false);
 
+        dataList = new ArrayList<>();
+        adapterCT = new MyAdapter(HomeActivity.this, dataList);
+        recyclerView.setAdapter(adapterCT);
 
+        root = FirebaseDatabase.getInstance().getReference();
+        user = root.child("users").child(userId);
+        backlog = user.child("backlog").child("todo");
+        readUserData = backlog.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                dataList.clear();
+                for (DataSnapshot itemSnapshot: snapshot.getChildren()){
+                    TaskDataClass dataClass = itemSnapshot.getValue(TaskDataClass.class);
+                    dataClass.setKey(itemSnapshot.getKey());
+                    dataList.add(dataClass);
+                }
+                adapterCT.notifyDataSetChanged();
 
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                dialog.dismiss();
+            }
+        });
     }
 
 
@@ -243,7 +272,7 @@ public class HomeActivity extends AppCompatActivity {
         });
         logoutBtn.setOnClickListener(view -> {
             FirebaseAuth.getInstance().signOut();
-            user_name.removeEventListener(readUserData);
+            user.removeEventListener(readUserData);
             gotoLogin();
         });
         settings.setOnClickListener(view -> {
@@ -300,20 +329,6 @@ public class HomeActivity extends AppCompatActivity {
         }else{
             authService.gotoLogin();
         }
-    }
-    void ReadTask(){
-//        taskCrudService.readTask();
-//        tname = taskCrudService.getTname();
-//        tdate = taskCrudService.getTdate();
-//        tstart = taskCrudService.getTstart();
-//        tend = taskCrudService.getTend();
-//        tnote = taskCrudService.getTnote();
-
-        tnameTv.setText(tname);
-        tdateTv.setText(tdate);
-        tstartTv.setText(tstart);
-        tendTv.setText(tend);
-        tnoteTv.setText(tnote);
     }
 
 }
