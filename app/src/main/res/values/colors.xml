@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FFFFB800</color>
     <color name="blacked">#F2000000</color>
+    <color name="pink">#FFFFEEBB</color>
 </resources>
