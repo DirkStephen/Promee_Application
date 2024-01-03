@@ -21,7 +21,7 @@
             android:layout_below="@+id/toolbar">
             <com.google.android.material.tabs.TabLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="50dp"
                 android:layout_marginStart="50dp"
@@ -30,10 +30,13 @@
                 app:tabMode="fixed"
                 app:tabGravity="fill"
                 app:tabIndicatorGravity="stretch"
+                app:tabIndicatorFullWidth="true"
                 app:tabSelectedTextColor="@color/white"
                 app:tabIndicatorAnimationMode="elastic"
-                app:tabIndicator="@drawable/carousel"
-                android:background="@color/yellow" />
+                app:tabIndicator="@drawable/tab_indicator"
+                app:tabIndicatorColor="@color/yellow"
+                android:background="@drawable/roundstyle"
+                />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:layout_width="match_parent"

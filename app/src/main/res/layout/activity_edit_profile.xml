@@ -20,8 +20,8 @@
                     android:text="Edit Profile"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textSize="27sp"
+                    android:textStyle="normal" />
 
                 <ImageView
                     android:layout_width="wrap_content"

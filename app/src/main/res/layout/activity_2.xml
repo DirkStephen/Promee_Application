@@ -33,13 +33,13 @@
         android:layout_marginStart="30dp" />
 
     <EditText
-        android:hint="Enter username"
-        android:layout_width="300dp"
+        android:layout_width="344dp"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="15dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:hint="Enter username"
+        android:padding="15dp" />
 
 
     <TextView
@@ -51,18 +51,19 @@
         android:textStyle="bold" />
 
     <EditText
-        android:hint="Enter password"
-        android:layout_width="300dp"
+        android:layout_width="344dp"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="15dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:hint="Enter password"
+        android:padding="15dp" />
 
     <Button
         android:layout_marginTop="30dp"
         android:layout_width="300dp"
         android:text="Log In"
+        android:layout_gravity="center_horizontal"
         android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp" />
