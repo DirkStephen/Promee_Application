@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/detailTitle"
+        android:text="Task name"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/dm_sans"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailDate"
+            android:text="date"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:layout_marginStart="-410dp"
+            android:layout_marginTop="140dp"
+            android:fontFamily="@font/dm_sans"
+            />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startTime"
+        android:text="start time"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginStart="-350dp"
+        android:layout_marginTop="190dp"
+        android:fontFamily="@font/dm_sans"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/endTime"
+        android:text="end time"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="190dp"
+        android:fontFamily="@font/dm_sans"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/notes"
+        android:text="Notes"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginStart="-350dp"
+        android:layout_marginTop="260dp"
+        android:fontFamily="@font/dm_sans"
+        />
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:id="@+id/delete"
+        android:src="@drawable/delete"
+        android:textColor="@color/white"
+        android:fontFamily="@font/dm_sans"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="20dp"
+        />
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:id="@+id/edit"
+        android:src="@drawable/edit"
+        android:fontFamily="@font/dm_sans"
+        android:layout_marginStart="-430dp"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

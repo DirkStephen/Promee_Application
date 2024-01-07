@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,16 +16,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SignUpUI"
         tools:targetApi="31">
-        <activity android:name=".EditProfile"
-            android:exported="true"/>
-        <activity android:name=".ProfilePage"
-            android:exported="true"/>
-        <activity android:name=".SettingsPage"
-            android:exported="true"/>
-        <activity android:name=".AboutPage"
-            android:exported="true"/>
-        <activity android:name=".NotificationsPage"
-            android:exported="true"/>
+        <activity
+            android:name=".edit_task_dialog"
+            android:exported="false" />
+        <activity
+            android:name=".DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfile"
+            android:exported="true" />
+        <activity
+            android:name=".ProfilePage"
+            android:exported="true" />
+        <activity
+            android:name=".SettingsPage"
+            android:exported="true" />
+        <activity
+            android:name=".AboutPage"
+            android:exported="true" />
+        <activity
+            android:name=".NotificationsPage"
+            android:exported="true" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
@@ -33,23 +46,23 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
-        <activity android:name=".HelpPage"
-            android:exported="true"/>
-        <activity android:name=".GroupPage"
-            android:exported="true"/>
+        <activity
+            android:name=".HelpPage"
+            android:exported="true" />
+        <activity
+            android:name=".GroupPage"
+            android:exported="true" />
         <activity
             android:name=".HomeActivitySample"
             android:exported="false" />
         <activity
             android:name=".activity2"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
-        <activity android:name=".SplashActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,7 +71,5 @@
             </intent-filter>
         </activity>
     </application>
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>

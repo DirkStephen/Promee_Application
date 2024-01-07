@@ -39,16 +39,33 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.recTitle.setText(dataList.get(position).getTname());
         holder.recDate.setText(dataList.get(position).getTdate());
+
+
+        holder.recCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("Task name", dataList.get(holder.getAdapterPosition()).getTname());
+                intent.putExtra("Date", dataList.get(holder.getAdapterPosition()).getTdate());
+                intent.putExtra("Start Date", dataList.get(holder.getAdapterPosition()).getTstart());
+                intent.putExtra("End Time", dataList.get(holder.getAdapterPosition()).getTend());
+                intent.putExtra("Notes", dataList.get(holder.getAdapterPosition()).getTnote());
+                intent.putExtra("Key", dataList.get(holder.getAdapterPosition()).getKey());
+
+                context .startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
+
         return dataList.size();
     }
 }
 
 class MyViewHolder extends RecyclerView.ViewHolder{
-    TextView recTitle, recDate;
+    TextView recTitle, recDate, recStartTime, recEndTime, recNotes;
     CardView recCard;
 
     public MyViewHolder(@NonNull View itemView) {
@@ -56,6 +73,9 @@ class MyViewHolder extends RecyclerView.ViewHolder{
 
         recCard = itemView.findViewById(R.id.recCard);
         recDate = itemView.findViewById(R.id.recDate);
+        recStartTime = itemView.findViewById(R.id.startTime);
+        recEndTime = itemView.findViewById(R.id.endTime);
+        recNotes = itemView.findViewById(R.id.taskNote);
         recTitle = itemView.findViewById(R.id.recTitle);
     }
 }
