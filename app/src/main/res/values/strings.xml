@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">Promee</string>
     <string name="create_new_account">Create new account</string>
-        <string name="cancel">CANCEL</string>
-        <string name="create_task">Create task</string>
-        <string name="task_name">Task name</string>
-        <string name="date">Date</string>
-        <string name="time">Time</string>
-        <string name="add_note">Add note</string>
-        <string name="create">CREATE</string>
-        <string name="create_task1">Create Task</string>
-        <string name="enter_a_task">Enter a task</string>
-        <string name="start_time">Start time</string>
-        <string name="end_time">End time</string>
+    <string name="cancel">CANCEL</string>
+    <string name="create_task">Create task</string>
+    <string name="task_name">Task name</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="add_note">Add note</string>
+    <string name="create">CREATE</string>
+    <string name="create_task1">Create Task</string>
+    <string name="enter_a_task">Enter a task</string>
+    <string name="start_time">Start time</string>
+    <string name="end_time">End time</string>
 </resources>

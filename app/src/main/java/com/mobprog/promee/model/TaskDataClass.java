@@ -2,6 +2,7 @@ package com.mobprog.promee.model;
 
 public class TaskDataClass {
     String tname, tdate, tstart, tend, tnote;
+
     private String key;
     public String getKey() {
         return key;
@@ -21,6 +22,7 @@ public class TaskDataClass {
         this.tend = tend;
         this.tnote = tnote;
     }
+
 
     public String getTname() {
         return tname;
